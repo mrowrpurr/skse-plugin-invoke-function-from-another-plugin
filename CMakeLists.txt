@@ -18,7 +18,7 @@ target_precompile_headers(${PROJECT_NAME} PUBLIC src/PCH.h)
 include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}")
+install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}")
 # install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
 include(CMakePackageConfigHelpers)
@@ -41,7 +41,7 @@ write_basic_package_version_file(
 install(FILES
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
-	DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}"
+	DESTINATION "${CMAKE_INSTALL_DATADIR}"
 )
 export(EXPORT "${PROJECT_NAME}-targets"
   FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake"
