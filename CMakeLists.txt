@@ -21,10 +21,6 @@ install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "
 install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}/../..")
 # install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
-# ... vcpkg is angry that some folder doesn't exist ... debug/share ... playing with this ...
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}")
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}")
-
 include(CMakePackageConfigHelpers)
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
 	"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
@@ -50,6 +46,13 @@ install(FILES
 export(EXPORT "${PROJECT_NAME}-targets"
   FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake"
 )
+
+# ... vcpkg is angry that some folder doesn't exist ... debug/share ... playing with this ...
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}")
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}")
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}")
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}")
+
 
 add_custom_command(
 	TARGET "${PROJECT_NAME}"
