@@ -15,13 +15,13 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 include_directories(${PROJECT_NAME} include)
 target_precompile_headers(${PROJECT_NAME} PUBLIC src/PCH.h)
 
-configure_file(cmake/config.cmake.in "${PROJECT_NAME}Config.cmake" @ONLY)
+configure_file(cmake/config.cmake.in "${PROJECT_NAME}-targets.cmake" @ONLY)
 
 include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 install(EXPORT "${PROJECT_NAME}-targets" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/../share/${PROJECT_NAME}")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/../share/${PROJECT_NAME}")
 
 add_custom_command(
 	TARGET "${PROJECT_NAME}"
