@@ -16,8 +16,7 @@ include_directories(${PROJECT_NAME} include)
 target_precompile_headers(${PROJECT_NAME} PUBLIC src/PCH.h)
 
 include(GNUInstallDirs)
-
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/MySkseLibraryExample" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 install(EXPORT "${PROJECT_NAME}-targets" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
