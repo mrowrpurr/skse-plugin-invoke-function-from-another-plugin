@@ -2,17 +2,11 @@
 
 namespace SkseLibraryDemo {
 
-    class MyDemoSingleton {
-        MyDemoSingleton() = default;
-
+    class __declspec(dllexport) MyDemoSingleton {
     public:
-        MyDemoSingleton(const MyDemoSingleton&) = delete;
-        MyDemoSingleton &operator=(const MyDemoSingleton&) = delete;
-        static MyDemoSingleton& GetSingleton() {
-            static MyDemoSingleton demo;
-            return demo;
-        }
-
-        std::vector<std::string> someStrings = {};
+        virtual size_t GetCount() = 0;
+        virtual void Clear() = 0;
+        virtual void Add(char* value) = 0;
+        virtual const char* GetAt(int index) = 0;
     };
 }

@@ -1,4 +1,4 @@
-#include "SkseLibraryDemo/MyDemoSingleton.h"
+#include "SkseLibraryDemo.h"
 
 namespace SkseLibraryDemo::Implementation {
 
