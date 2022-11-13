@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SkseLibraryDemo/MyDemoSingleton.h"
+#include "MySkseLibraryExample/MyDemoSingleton.h"
 
-namespace SkseLibraryDemo {
+namespace MySkseLibraryExample {
 
     class MyDemoSingletonImpl : public MyDemoSingleton {
         MyDemoSingletonImpl() = default;

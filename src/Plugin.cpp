@@ -1,6 +1,6 @@
-#include "SkseLibraryDemo.h"
+#include "MySkseLibraryExample.h"
 
-namespace SkseLibraryDemo::Implementation {
+namespace MySkseLibraryExample::Implementation {
 
     void InitializeLog() {
         auto path = logger::log_directory();

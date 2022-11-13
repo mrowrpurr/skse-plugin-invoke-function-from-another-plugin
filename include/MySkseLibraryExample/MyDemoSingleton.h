@@ -1,6 +1,6 @@
 #pragma once
 
-namespace SkseLibraryDemo {
+namespace MySkseLibraryExample {
 
     class __declspec(dllexport) MyDemoSingleton {
     public:

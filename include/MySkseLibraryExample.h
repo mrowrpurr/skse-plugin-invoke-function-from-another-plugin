@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SkseLibraryDemo/Implementation/MyDemoSingletonImpl.h"
+#include "MySkseLibraryExample/Implementation/MyDemoSingletonImpl.h"
 
-namespace SkseLibraryDemo {
+namespace MySkseLibraryExample {
     MyDemoSingleton& GetDemoSingleton() {
         return MyDemoSingletonImpl::GetSingleton();
     }
