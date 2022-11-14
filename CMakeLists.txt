@@ -15,7 +15,7 @@ if(BUILD_DLL)
 	set(SOURCE_FILES ${API_INTERFACE_FILES} ${IMPLEMENTATION_FILES})
 	set(INCLUDE_FOLDERS include include_implementation)
 else()
-	set(SOURCE_FILES ${API_INTERFACE_FILES})
+	set(SOURCE_FILES ${API_INTERFACE_FILES} src/PCH.h) # client seems to want the PCH
 	set(INCLUDE_FOLDERS include)
 endif()
 
