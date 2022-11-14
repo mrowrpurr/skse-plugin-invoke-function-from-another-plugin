@@ -16,14 +16,21 @@ include_directories(${PROJECT_NAME} include)
 target_precompile_headers(${PROJECT_NAME} PUBLIC src/PCH.h)
 
 include(GNUInstallDirs)
-install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}/../..")
-# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
+# Tutorial: https://cmake.org/cmake/help/latest/guide/tutorial/Adding%20Export%20Configuration.html
+
+# is this right?
+install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+
+install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/../share/MySkseLibraryExample")
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 # ... vcpkg is angry that some folder doesn't exist ... debug/share ... playing with this ...
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}")
-install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}")
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATADIR}")
+# install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}")
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
@@ -32,24 +39,8 @@ configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
 	NO_SET_AND_CHECK_MACRO
 	NO_CHECK_REQUIRED_COMPONENTS_MACRO
 )
-# write_basic_package_version_file(
-# 	"${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE_NAME}ConfigVersion.cmake"
-# 	VERSION "0.0.1"
-# 	COMPATIBILITY AnyNewerVersion
-# )
-# install(FILES
-# 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-# 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
-# 	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
-# )
-install(FILES
-	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-	# ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
-	DESTINATION "${CMAKE_INSTALL_DATADIR}/../.."
-)
-export(EXPORT "${PROJECT_NAME}-targets"
-  FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake"
-)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+export(EXPORT "${PROJECT_NAME}-targets" FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake")
 
 add_custom_command(
 	TARGET "${PROJECT_NAME}"
