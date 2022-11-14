@@ -1,7 +1,7 @@
 #include "MySkseLibraryExample/MyDemoSingletonImpl.h"
 
 namespace MySkseLibraryExample {
-    MyDemoSingleton& GetDemoSingleton() {
+    API_INTERFACE MyDemoSingleton& GetDemoSingleton() {
         return MyDemoSingletonImpl::GetSingleton();
     }
 }
