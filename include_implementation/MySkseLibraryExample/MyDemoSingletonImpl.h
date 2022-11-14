@@ -11,10 +11,7 @@ namespace MySkseLibraryExample {
     public:
         MyDemoSingletonImpl(const MyDemoSingletonImpl&) = delete;
         MyDemoSingletonImpl &operator=(const MyDemoSingletonImpl&) = delete;
-        static API_INTERFACE MyDemoSingletonImpl& GetSingleton() {
-            static MyDemoSingletonImpl demo;
-            return demo;
-        }
+        static API_INTERFACE MyDemoSingleton& GetSingleton();
 
         API_INTERFACE size_t GetCount() override { return items.size(); }
         API_INTERFACE void Clear() override { items.clear(); }
