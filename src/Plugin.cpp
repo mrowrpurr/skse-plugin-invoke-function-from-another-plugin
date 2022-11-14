@@ -1,3 +1,7 @@
+namespace stl {
+	constexpr std::string_view safe_string(const char* a_str) { return a_str ? a_str : ""sv; }
+}
+
 #include "MySkseLibraryExample.h"
 
 namespace MySkseLibraryExample::Implementation {

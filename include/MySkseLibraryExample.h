@@ -3,5 +3,5 @@
 #include "MySkseLibraryExample/MyDemoSingleton.h"
 
 namespace MySkseLibraryExample {
-    extern "C" DLL_EXPORTED MyDemoSingleton& GetDemoSingleton();
+    extern "C" API_INTERFACE MyDemoSingleton& GetDemoSingleton();
 }

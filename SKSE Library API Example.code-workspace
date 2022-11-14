@@ -11,7 +11,8 @@
         "papyrus.skyrim.enabled": false,
         "files.associations": {
             "format": "cpp",
-            "functional": "cpp"
+            "functional": "cpp",
+            "xstring": "cpp"
         }
     }
 }

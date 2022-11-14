@@ -1,7 +1,7 @@
 #include "MySkseLibraryExample/MyDemoSingletonImpl.h"
 
 namespace MySkseLibraryExample {
-    extern "C" MyDemoSingleton& GetDemoSingleton() {
+    MyDemoSingleton& GetDemoSingleton() {
         return MyDemoSingletonImpl::GetSingleton();
     }
 }

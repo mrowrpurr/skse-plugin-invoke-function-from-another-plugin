@@ -2,7 +2,7 @@
 
 namespace MySkseLibraryExample {
 
-    class DLL_EXPORTED MyDemoSingleton {
+    class API_INTERFACE MyDemoSingleton {
     public:
         virtual size_t GetCount() = 0;
         virtual void Clear() = 0;
