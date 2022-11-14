@@ -132,6 +132,7 @@ function(add_commonlibsse_plugin_ng TARGET)
     cmake_parse_arguments(PARSE_ARGV 1 ADD_COMMONLIBSSE_PLUGIN "${options}" "${oneValueArgs}"
             "${multiValueArgs}")
 
+    # TODO - add a switch for this!
     add_library("${TARGET}" STATIC $<$<BOOL:${ADD_COMMONLIBSSE_PLUGIN_EXCLUDE_FROM_ALL}>:EXCLUDE_FROM_ALL>
             ${ADD_COMMONLIBSSE_PLUGIN_SOURCES})
     target_commonlibsse_properties_ng("${TARGET}" ${ARGN})

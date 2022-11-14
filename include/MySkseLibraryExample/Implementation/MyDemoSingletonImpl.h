@@ -18,14 +18,18 @@ namespace MySkseLibraryExample {
 
         size_t GetCount() override { return items.size(); }
         void Clear() override { items.clear(); }
-        void Add(char* value) override { items.emplace_back(value); }
+        void Add(const char* value) override { items.emplace_back(value); }
         const char* GetAt(int index) override {
             if (items.size() > index)
                 return items[index].c_str();
             else
                 return nullptr;
         }
-
-
+        void LogAll() override {
+            logger::info("LogAll ({})", items.size());
+            for (auto& text : items) {
+                logger::info("ITEM: {}", text);
+            }
+        }
     };
 }
