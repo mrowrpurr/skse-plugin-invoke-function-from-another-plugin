@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef BUILD_DLL
+#define DLL_EXPORTED __declspec(dllexport)
+#else
+#define DLL_EXPORTED __declspec(dllimport)
+#endif
+
 #include "RE/Skyrim.h"
 #include "SKSE/SKSE.h"
 

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "MySkseLibraryExample/Implementation/MyDemoSingletonImpl.h"
+#include "MySkseLibraryExample/MyDemoSingleton.h"
 
 namespace MySkseLibraryExample {
-    extern "C" __declspec(dllexport) MyDemoSingleton& GetDemoSingleton() {
-        return MyDemoSingletonImpl::GetSingleton();
-    }
+    extern "C" DLL_EXPORTED MyDemoSingleton& GetDemoSingleton();
 }
