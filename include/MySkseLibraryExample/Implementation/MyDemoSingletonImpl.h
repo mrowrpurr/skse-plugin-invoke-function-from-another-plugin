@@ -4,6 +4,8 @@
 
 namespace MySkseLibraryExample {
 
+    // TODO - extern C! figure out what's up...
+
     class MyDemoSingletonImpl : public MyDemoSingleton {
         MyDemoSingletonImpl() = default;
         std::vector<std::string> items = {};

@@ -3,7 +3,7 @@
 #include "MySkseLibraryExample/Implementation/MyDemoSingletonImpl.h"
 
 namespace MySkseLibraryExample {
-    MyDemoSingleton& GetDemoSingleton() {
+    extern "C" __declspec(dllexport) MyDemoSingleton& GetDemoSingleton() {
         return MyDemoSingletonImpl::GetSingleton();
     }
 }
