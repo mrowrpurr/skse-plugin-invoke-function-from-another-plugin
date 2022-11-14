@@ -6,6 +6,6 @@ include(CMakeFindDependencyMacro)
 
 find_package(CommonLibSSE REQUIRED)
 
-set_target_properties("${PROJECT_NAME}::${PROJECT_NAME}" PROPERTIES
+set_target_properties("MySkseLibraryExample::MySkseLibraryExample" PROPERTIES
     IMPORTED_LOCATION_NOCONFIG  "@PACKAGE_LIBRARY_INSTALL_DIR@/include"
 )
