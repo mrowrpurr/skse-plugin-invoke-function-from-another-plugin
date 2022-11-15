@@ -5,12 +5,12 @@
 namespace MySkseLibraryExample {
 
     class MyDemoSingletonImpl : public MyDemoSingleton {
-        MyDemoSingletonImpl() = default;
+        API_INTERFACE MyDemoSingletonImpl() = default;
         std::vector<std::string> items = {};
 
     public:
-        MyDemoSingletonImpl(const MyDemoSingletonImpl&) = delete;
-        MyDemoSingletonImpl &operator=(const MyDemoSingletonImpl&) = delete;
+        API_INTERFACE MyDemoSingletonImpl(const MyDemoSingletonImpl&) = delete;
+        API_INTERFACE MyDemoSingletonImpl &operator=(const MyDemoSingletonImpl&) = delete;
         static API_INTERFACE MyDemoSingleton& GetSingleton();
 
         API_INTERFACE size_t GetCount() override { return items.size(); }
