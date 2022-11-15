@@ -32,7 +32,13 @@ include(GNUInstallDirs)
 
 # Tutorial: https://cmake.org/cmake/help/latest/guide/tutorial/Adding%20Export%20Configuration.html
 install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-install(TARGETS "${PROJECT_NAME}" EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(
+	TARGETS "${PROJECT_NAME}"
+	EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+	RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+	LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+	ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+)
 install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
 include(CMakePackageConfigHelpers)
