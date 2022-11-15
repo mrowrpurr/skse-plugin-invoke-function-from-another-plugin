@@ -27,6 +27,7 @@ namespace MySkseLibraryExample::Implementation {
                 logger::info("Hello From Skse Library API");
                 // SKSE::GetPapyrusInterface()->Register(PapyrusInterface::BIND);
                 logger::info("Let's make sure I can use this from itself...");
+                logger::info("basic test: {}", MySkseLibraryExample::BasicTest());
                 auto& whatever = MySkseLibraryExample::GetDemoSingleton();
                 whatever.Add("Add something");
                 logger::info("Added something");
