@@ -5,7 +5,8 @@ project(MySkseLibraryExample VERSION 0.0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_DLL "Build main .dll (will dllexport rather than dllimport)" OFF)
+option(BUILD_DLL "Build main .dll (will dllexport rather than dllimport)" ON)
+# option(BUILD_DLL "Build main .dll (will dllexport rather than dllimport)" OFF)
 
 file(GLOB_RECURSE API_INTERFACE_FILES include/*.h)
 file(GLOB_RECURSE IMPLEMENTATION_FILES src/*.cpp src/*.h include_implementation/*.h)
@@ -15,7 +16,8 @@ if(BUILD_DLL)
 	set(SOURCE_FILES ${API_INTERFACE_FILES} ${IMPLEMENTATION_FILES})
 	set(INCLUDE_FOLDERS include include_implementation)
 else()
-	set(SOURCE_FILES ${API_INTERFACE_FILES} src/PCH.h) # client seems to want the PCH as well?
+	set(SOURCE_FILES ${API_INTERFACE_FILES} ${IMPLEMENTATION_FILES})
+	# set(SOURCE_FILES ${API_INTERFACE_FILES} src/PCH.h) # client seems to want the PCH as well?
 	set(INCLUDE_FOLDERS include)
 endif()
 
