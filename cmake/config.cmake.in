@@ -4,9 +4,11 @@ include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@-targets.cmake")
 
 include(CMakeFindDependencyMacro)
 
+message(STATUS "Everyone uses these variables! a:${MySkseLibraryExample_LIBRARY} b:${MySkseLibraryExample_INCLUDE_DIR} c:${MySkseLibraryExample_LIBRARY_DEBUG}")
+
 find_package(CommonLibSSE REQUIRED)
 
-set_target_properties(MySkseLibraryExample PROPERTIES
+set_target_properties("MySkseLibraryExample::MySkseLibraryExample" PROPERTIES
     IMPORTED_LOCATION  "@PACKAGE_LIBRARY_INSTALL_DIR@/lib/!MySkseLibraryExample.dll"
     IMPORTED_IMPLIB    "@PACKAGE_LIBRARY_INSTALL_DIR@/lib/!MySkseLibraryExample.lib"
     INTERFACE_INCLUDE_DIRECTORIES  "@PACKAGE_LIBRARY_INSTALL_DIR@/include"
