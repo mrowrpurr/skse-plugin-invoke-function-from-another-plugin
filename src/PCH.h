@@ -1,11 +1,5 @@
 #pragma once
 
-#ifdef BUILD_DLL
-#define API_INTERFACE
-#else
-#define API_INTERFACE
-#endif
-
 #include "RE/Skyrim.h"
 #include "SKSE/SKSE.h"
 

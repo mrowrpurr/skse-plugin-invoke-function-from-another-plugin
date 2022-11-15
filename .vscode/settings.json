@@ -1,5 +1,4 @@
 {
-    "cmake.configureArgs": ["-DBUILD_DLL=ON"],
     "files.associations": {
         "format": "cpp",
         "algorithm": "cpp",

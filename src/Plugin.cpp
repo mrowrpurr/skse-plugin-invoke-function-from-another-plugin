@@ -26,6 +26,12 @@ namespace MySkseLibraryExample::Implementation {
             if (event->type == SKSE::MessagingInterface::kDataLoaded) {
                 logger::info("Hello From Skse Library API");
                 // SKSE::GetPapyrusInterface()->Register(PapyrusInterface::BIND);
+                logger::info("Let's make sure I can use this from itself...");
+                auto& whatever = MySkseLibraryExample::GetDemoSingleton();
+                whatever.Add("Add something");
+                logger::info("Added something");
+                whatever.LogAll();
+                logger::info("It should have logged now");
             }
         });
         return true;
