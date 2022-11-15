@@ -4,7 +4,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@-targets.cmake")
 
 include(CMakeFindDependencyMacro)
 
-message(STATUS "Everyone uses these variables! a:${MySkseLibraryExample_LIBRARY} b:${MySkseLibraryExample_INCLUDE_DIR} c:${MySkseLibraryExample_LIBRARY_DEBUG}")
+message(STATUS "Everyone uses these variables! InstallDir:@PACKAGE_LIBRARY_INSTALL_DIR@ prefix:@PACKAGE_CMAKE_INSTALL_PREFIX@ libs:@MYSKSELIBRARYEXAMPLE_INSTALL_LIBS@ curly:${SALOME_INSTALL_CMAKE}")
 
 find_package(CommonLibSSE REQUIRED)
 
