@@ -5,9 +5,3 @@ include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@-targets.cmake")
 include(CMakeFindDependencyMacro)
 
 find_package(CommonLibSSE REQUIRED)
-
-set_target_properties("MySkseLibraryExample::MySkseLibraryExample" PROPERTIES
-    IMPORTED_LOCATION  "${CMAKE_CURRENT_LIST_DIR}/../../lib/MySkseLibraryExample.dll"
-    IMPORTED_IMPLIB    "${CMAKE_CURRENT_LIST_DIR}/../../lib/MySkseLibraryExample.lib"
-    INTERFACE_INCLUDE_DIRECTORIES  "${CMAKE_CURRENT_LIST_DIR}/../../include"
-)
