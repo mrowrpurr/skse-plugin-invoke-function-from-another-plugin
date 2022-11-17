@@ -23,7 +23,6 @@ message(STATUS "Example API Source Files ${SOURCE_FILES}")
 include(cmake/CommonLibNG.cmake)
 find_package(CommonLibSSE CONFIG REQUIRED)
 add_commonlibsse_plugin_ng(${PROJECT_NAME} SOURCES ${SOURCE_FILES})
-# set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "!MySkseLibraryExample")
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 include_directories(${PROJECT_NAME} ${INCLUDE_FOLDERS})
 target_precompile_headers(${PROJECT_NAME} PUBLIC src/PCH.h)
@@ -35,9 +34,6 @@ install(DIRECTORY "${CMAKE_SOURCE_DIR}" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}
 install(
 	TARGETS "${PROJECT_NAME}"
 	EXPORT "${PROJECT_NAME}-targets" DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib
 )
 install(EXPORT "${PROJECT_NAME}-targets" FILE "${PROJECT_NAME}-targets.cmake" NAMESPACE "MySkseLibraryExample::" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 

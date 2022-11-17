@@ -3,7 +3,7 @@
 #ifdef BUILD_DLL
 	#define API_INTERFACE __declspec(dllexport)
 #else
-	#define API_INTERFACE __declspec(dllimport)
+	#define API_INTERFACE
 #endif
 
 #include "RE/Skyrim.h"

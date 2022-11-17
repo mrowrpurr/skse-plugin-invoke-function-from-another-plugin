@@ -23,16 +23,19 @@ namespace MySkseLibraryExample::Implementation {
         logger::info("Initialize");
         SKSE::Init(skse);
         SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message* event){
+
+ SKSE::GetMessagingInterface()->RegisterListener("MySkseLibrary.ClientTwo", [](SKSE::MessagingInterface::Message* event){
+            logger::info("MESSAGE FROM THE client!");
+        });
+
+            logger::info("Message Type {}", event->type);
             if (event->type == SKSE::MessagingInterface::kDataLoaded) {
                 logger::info("Hello From Skse Library API");
-                // SKSE::GetPapyrusInterface()->Register(PapyrusInterface::BIND);
-                logger::info("Let's make sure I can use this from itself...");
-                logger::info("basic test: {}", MySkseLibraryExample::BasicTest());
-                auto& whatever = MySkseLibraryExample::GetDemoSingleton();
-                whatever.Add("Add something");
-                logger::info("Added something");
-                whatever.LogAll();
-                logger::info("It should have logged now");
+                auto* api = &MySkseLibraryExample::GetDemoSingleton();
+                logger::info("Sending 6969");
+                SKSE::GetMessagingInterface()->Dispatch(6969, api, sizeof(api), "MySkseLibrary.ClientTwo");
+            } else if (event->type == 6969) {
+                logger::info("GOT 6969 from server");
             }
         });
         return true;
