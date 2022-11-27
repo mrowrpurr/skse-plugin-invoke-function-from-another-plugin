@@ -1,3 +1,5 @@
+#include "PluginWithFunction.h"
+
 #include <spdlog/sinks/basic_file_sink.h>
 
 void InitializeLog() {
@@ -17,5 +19,11 @@ SKSEPluginLoad(const SKSE::LoadInterface* skse) {
 	InitializeLog();
 	SKSE::log::info("Hello from Plugin that calls a Function in a different Plugin");
 	SKSE::Init(skse);
+	SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message* message){
+		if (message->type == SKSE::MessagingInterface::kDataLoaded) {
+			SKSE::log::info("Data Loaded!");
+			PluginWithFunction::SayHello(); // <--- this breaks the plugin
+		}
+	});
 	return true;
 }

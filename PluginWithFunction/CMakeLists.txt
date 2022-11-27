@@ -1,10 +1,11 @@
 project(SKSE.Example.PluginWithFunction VERSION 0.0.1 LANGUAGES CXX)
 
-set(SOURCE_FILES plugin.cpp)
+set(SOURCE_FILES plugin.cpp PluginWithFunction.cpp)
 
 add_commonlibsse_plugin(${PROJECT_NAME} SOURCES ${SOURCE_FILES})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/PCH.h)
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 if(DEPLOY_MOD)
 	if(EXISTS "${DEPLOY_ROOT}")

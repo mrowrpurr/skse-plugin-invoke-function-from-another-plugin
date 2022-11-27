@@ -5,6 +5,8 @@ set(SOURCE_FILES plugin.cpp)
 add_commonlibsse_plugin(${PROJECT_NAME} SOURCES ${SOURCE_FILES})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/PCH.h)
+target_link_libraries(${PROJECT_NAME} PRIVATE SKSE.Example.PluginWithFunction)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../PluginWithFunction/include)
 
 if(DEPLOY_MOD)
 	if(EXISTS "${DEPLOY_ROOT}")
